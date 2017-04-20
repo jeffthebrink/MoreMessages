@@ -30,15 +30,15 @@ public class Main {
         );
 
 
-        Spark.post("/index", (request, response) -> { // send and display index page showing login fields
+        Spark.post("/create-user", (request, response) -> {
             String name = request.queryParams("loginName");
             String password = request.queryParams("password");
             if (!userHashMap.containsKey(name)) {
-                User user = new User(name, password);// assign user input to user object (login name and password)
-                userHashMap.put(name, user); // put that info in the hashmap with the username as the key
+                User user = new User(name, password);
+                userHashMap.put(name, user);
             }
             Session session = request.session();
-            session.attribute("userName", name); // attach cookie info to name for this session
+            session.attribute("userName", name);
             response.redirect("/");
             return "";
         });
@@ -61,15 +61,6 @@ public class Main {
             session.invalidate();
             response.redirect("/");
             return "";
-        });
-
-        Spark.post("/login", (request, response) -> {
-            String name = request.queryParams("loginName");
-            Session session = request.session();
-            session.attribute("userName", name);    // track user in session cookie
-            response.redirect("/");
-            return "";
-
         });
 
         Spark.post("/deleteMessage", (request, response) -> {

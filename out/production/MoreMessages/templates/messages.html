@@ -21,18 +21,20 @@
     <input type="text" placeholder="Message" name="message" />
     <button type="submit">Submit</button>
 </form>
+
 <h3>Delete a Message:</h3>
 <form action="/deleteMessage" method="post">
-    <input type="text" placeholder="Message number" name="deleteNumber" />
+    <input type="number" placeholder="Message number" name="deleteNumber" />
     <button type="submit">Delete</button>
 </form>
 
 <h3>Edit a Message:</h3>
 <form action="/editMessage" method="post">
-    <input type="text" placeholder="Message number" name="editNumber" />
+    <input type="number" placeholder="Message number" name="editNumber" />
     <input type="text" placeholder="New message" name="newMessage" />
     <button type="submit">Edit</button>
 </form>
+<hr>
 
 <h2>Messages</h2>
 <ol>
